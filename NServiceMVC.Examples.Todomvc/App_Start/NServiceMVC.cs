@@ -21,6 +21,8 @@ namespace NServiceMVC.Examples.Todomvc.App_Start
 				
 				// expose metadata at ~/metadata
                 config.Metadata("metadata");
+
+                config.JsonCamelCase = true;
             });
         }
     }
