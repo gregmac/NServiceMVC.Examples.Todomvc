@@ -34,7 +34,10 @@ namespace NServiceMVC.Examples.Todomvc.Controllers
         [Description("Update an existing Todo")]
         public object Update(Guid id, Models.Todo item)
         {
-            Todos.Update(id, item);
+            if (!Todos.Update(id, item))
+            {
+                throw new ServiceException(new { Message = "Failed to find requested id to update" });
+            }
             return null;
         }
 
@@ -42,8 +45,12 @@ namespace NServiceMVC.Examples.Todomvc.Controllers
         [Description("Delete a Todo")]
         public object Delete(Guid id)
         {
-            Todos.Delete(id);
+            if (!Todos.Delete(id))
+            {
+                throw new ServiceException(new { Message = "Failed to find requested id to delete" });
+            }
             return null;
         }
+
     }
 }
