@@ -163,7 +163,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="default.htm" />
     <Content Include="README.jQuery.vsdoc.txt" />
-    <Content Include="Scripts\backbone-localstorage.js" />
     <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\backbone.min.js" />
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
@@ -174,7 +173,6 @@
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\underscore.js" />
