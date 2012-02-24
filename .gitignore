@@ -1,0 +1,13 @@
+bin/
+obj/
+_ReSharper.*
+*.TeamCity.user
+*.ReSharper.user
+*.csproj.user
+*.user
+*.suo
+*.cache
+artifacts/*.nupkg
+App_Data/
+build/nuget.*/lib/*
+src/packages/
