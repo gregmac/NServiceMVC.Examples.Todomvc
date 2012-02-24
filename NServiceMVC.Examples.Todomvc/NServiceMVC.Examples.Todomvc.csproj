@@ -128,7 +128,7 @@
     <Content Include="Content\todos.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="index.htm" />
+    <Content Include="default.htm" />
     <Content Include="README.jQuery.vsdoc.txt" />
     <Content Include="Scripts\backbone-localstorage.js" />
     <Content Include="Scripts\backbone.js" />
