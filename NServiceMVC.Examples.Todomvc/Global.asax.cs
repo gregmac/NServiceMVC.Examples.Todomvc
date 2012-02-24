@@ -27,6 +27,7 @@ namespace NServiceMVC.Examples.Todomvc
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
+            routes.IgnoreRoute("");
         }
 
         protected void Application_Start()
