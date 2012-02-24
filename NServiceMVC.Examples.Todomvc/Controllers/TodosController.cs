@@ -52,5 +52,30 @@ namespace NServiceMVC.Examples.Todomvc.Controllers
             return null;
         }
 
+        [DELETE("todos")]
+        [Description("Delete all Todos")]
+        public object Delete()
+        {
+            Todos.DeleteAll();
+            return null;
+        }
+
+        [GET("todos/count")]
+        [Description("Get the count of Todos. Not really RESTful, but you have this flexibility.")]
+        public int Count()
+        {
+            return Todos.Count();
+        }
+
+        [GET("todos/{id}")]
+        [Description("Load a specific Todo")]
+        public Models.Todo Load(Guid id)
+        {
+            var todo = Todos.GetById(id);
+            if (todo == null)
+                throw new ServiceException(System.Net.HttpStatusCode.NotFound, new { Message = "Failed to find specified id" });
+
+            return todo;
+        }
     }
 }
