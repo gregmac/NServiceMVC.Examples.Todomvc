@@ -9,18 +9,17 @@ namespace NServiceMVC.Examples.Todomvc.Controllers
 {
     public class TodosController : ServiceController
     {
-        private static IList<Models.Todo> Todos; // in-memory static list. Note no thread-safety!
-        public TodosController()
+        protected TodoStorage Todos; 
+        public TodosController(TodoStorage todos)
         {
-            if (Todos == null)
-                Todos = new List<Models.Todo>(); // initialize the list if it's not already
+            Todos = todos; // injected by IoC container
         }
 
         [GET("todos")]
         [Description("List all Todos")]
         public IEnumerable<Models.Todo> Index()
         {
-            return Todos;
+            return Todos.GetAll();
         }
 
         [POST("todos")]
@@ -35,9 +34,7 @@ namespace NServiceMVC.Examples.Todomvc.Controllers
         [Description("Update an existing Todo")]
         public object Update(Guid id, Models.Todo item)
         {
-            var existing = (from t in Todos where t.Id == id select t).FirstOrDefault();
-            if (existing != null)
-                existing = item;
+            Todos.Update(id, item);
             return null;
         }
 
@@ -45,8 +42,7 @@ namespace NServiceMVC.Examples.Todomvc.Controllers
         [Description("Delete a Todo")]
         public object Delete(Guid id)
         {
-            var existing = (from t in Todos where t.Id == id select t).FirstOrDefault();
-            Todos.Remove(existing);
+            Todos.Delete(id);
             return null;
         }
     }

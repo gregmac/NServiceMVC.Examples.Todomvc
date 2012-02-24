@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Autofac;
+using Autofac.Integration.Mvc;
 
 namespace NServiceMVC.Examples.Todomvc
 {
@@ -32,6 +34,20 @@ namespace NServiceMVC.Examples.Todomvc
 
         protected void Application_Start()
         {
+            // autofac boilerplate
+            var builder = new ContainerBuilder();
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
+             
+            // Set up global storage for our Todos  and register with Autofac
+            var todoStorage = new TodoStorage();
+            builder.Register(c => todoStorage);
+             
+            // autofac boilerplate
+            var container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+
+            // mvc boilerplate
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
