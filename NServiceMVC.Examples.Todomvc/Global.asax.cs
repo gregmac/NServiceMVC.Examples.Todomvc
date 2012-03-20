@@ -19,6 +19,8 @@ namespace NServiceMVC.Examples.Todomvc
 
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.IgnoreRoute("");
+            
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
@@ -26,8 +28,6 @@ namespace NServiceMVC.Examples.Todomvc
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
-
-            routes.IgnoreRoute("");
         }
 
         protected void Application_Start()
